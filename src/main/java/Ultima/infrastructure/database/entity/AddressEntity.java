@@ -5,8 +5,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

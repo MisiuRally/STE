@@ -11,8 +11,8 @@ import java.util.Set;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,10 +25,9 @@ public class TimeResultTournamentEntity {
     private Integer timeResultTournamentId;
 
     @OneToOne
-    @JoinColumn(name = "tournament_id")
-    private Tournament tournament;
+    @JoinColumn(name = "tournament_entity_id")
+    private TournamentEntity tournament;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "time_result_tournament")
-    private Set<TimeResult> result;
+
 
 }

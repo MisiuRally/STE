@@ -7,8 +7,8 @@ import java.util.Map;
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class TimeResult {
 
     Integer resultOfTournamentId;

@@ -6,14 +6,16 @@ import lombok.*;
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class Competitor {
 
     Integer competitorId;
     Person person;
-    Categories.AgeCategories ageCategories;
+    String ageCategories;
     Integer startNumber;
+    String result;
+    Tournament tournament;
 
 
 

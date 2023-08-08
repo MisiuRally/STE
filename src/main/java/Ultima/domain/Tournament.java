@@ -9,18 +9,18 @@ import java.util.Set;
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+@Setter
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class Tournament {
 
-    Integer integerId;
+    Integer tournamentId;
     String namOfTournament;
     Integer numbersOfStartPlates;
     Organizer organizer;
-    Categories.SportCategories sportCategories;
+    String sportCategories;
     OffsetDateTime startOfTournament;
     OffsetDateTime endOfTournament;
-    TimeResult result;
     Set<Competitor> startList;
 
 }

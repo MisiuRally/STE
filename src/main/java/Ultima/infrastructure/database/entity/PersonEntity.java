@@ -7,8 +7,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,14 +24,16 @@ public class PersonEntity {
     private String name;
     @Column(name = "surname")
     private String surname;
+    @Column(name = "date_of_birth ")
+    private String dateOfBirth ;
     @Column(name = "email")
     private String email;
     @Column(name = "phone")
     private String phone;
     @Column(name = "sex")
-    private Categories.Sex sex;
+    private String sex;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressEntity address;
 
 }

@@ -7,8 +7,8 @@ import java.util.Set;
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class Organizer {
 
     Integer organizerId;

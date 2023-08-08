@@ -5,8 +5,8 @@ import lombok.*;
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class TimeResultTournament {
 
     TimeResult timeResult;

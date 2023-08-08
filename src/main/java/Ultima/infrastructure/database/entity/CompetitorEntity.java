@@ -1,14 +1,12 @@
 package Ultima.infrastructure.database.entity;
 
-import Ultima.domain.Person;
-import Ultima.service.managment.Categories;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+@EqualsAndHashCode(of = "competitorId")
+@ToString(of = {"competitorId"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,12 +18,17 @@ public class CompetitorEntity {
     @Column(name = "competitor_id")
     private Integer competitorId;
     @Column(name = "age_category")
-    private Categories.AgeCategories ageCategories;
+    private String ageCategories;
     @Column(name = "start_number")
     private Integer startNumber;
-    @JoinColumn(name = "person_id")
+    @Column(name = "result")
+    private String result;
     @OneToOne(fetch = FetchType.LAZY)
-    private Person person;
+    @JoinColumn(name = "person_id")
+    private PersonEntity person;
+    @OneToOne
+    @JoinColumn(name = "tournament_id")
+    private TournamentEntity tournamentEntity;
 
 
 }

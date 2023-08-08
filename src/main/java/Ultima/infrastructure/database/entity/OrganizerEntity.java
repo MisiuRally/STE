@@ -6,8 +6,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,7 +31,7 @@ public class OrganizerEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressEntity address;
 
 
 }

@@ -2,21 +2,23 @@ package Ultima.domain;
 
 import Ultima.service.managment.Categories;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @With
 @Builder
 @Value
-@EqualsAndHashCode(of = "")
-@ToString(of = {""})
+//@EqualsAndHashCode(of = "")
+//@ToString(of = {""})
 public class Person {
+
     Integer personId;
     String name;
     String surname;
-    LocalDateTime dateOfBirth;
+    String dateOfBirth;
     String email;
     String phone;
-    Categories.Sex sex;
+    String sex;
     Address address;
 }
