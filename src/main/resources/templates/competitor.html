@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <title>SPORT TIME ENTERPRISE</title>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 
 <body>
 
-<div class="main-content">
+<div class="container">
 
-    <h1 >WITAJ ZAWODNIKU</h1>
+    <h1>WITAJ ZAWODNIKU</h1>
     <br>
 </div>
 
@@ -20,6 +20,13 @@
     <table class="table">
         <thead class="table-dark">
         <h2>OTO DOSTĘPNE IMPREZY SPORTOWE:</h2>
+
+
+        <form action="#" th:action="@{/competitor}" method="GET">
+
+        </form>
+
+
         <tr>
             <th>NR ID</th>
             <th>NAZWA IMPREZY</th>
@@ -29,6 +36,8 @@
             <th>RODZAJ ZAWODOW</th>
             <th>DATA STARTU ZAWODÓW</th>
             <th>DATA ZAKOŃCZENIA ZAWODÓW</th>
+            <th>DYSTANS[km]</th>
+            <th>WPISOWE[PLN]</th>
         </tr>
         </thead>
 
@@ -42,6 +51,8 @@
             <td th:text="${TournamentDTO.sportCategories}"></td>
             <td th:text="${TournamentDTO.startOfTournament}"></td>
             <td th:text="${TournamentDTO.endOfTournament}"></td>
+            <td th:text="${TournamentDTO.distance}"></td>
+            <td th:text="${TournamentDTO.buyIn}"></td>
         </tr>
         <br>
         </tbody>
@@ -55,28 +66,57 @@
     <div class="col-sm">
 
         <div class="col-sm">
+
             <h3>JESTEŚ ZAREJESTROWANYM ZAWODNIKIEM:</h3>
             <br>
             <br>
+            <form action="#" th:action="@{/competitor/addExisting}" method="POST">
+                <div class="form-group">
+                    ADRES EMAIL: <input type="text" th:name="email"/>
+                    PODAJ ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Zapisz się" name="button"/>
+                </div>
+            </form>
 
-        <div class="col-sm">
+        </div>
+
+
+        <div class="page-header" id="banner">
             <h3>JESTEŚ NOWYM ZAWODNIKIEM:</h3>
 
-            <form action="#"  th:action="@{/competitor/addNew}" method="POST">
+            <form action="#" th:action="@{/competitor/addNew}" method="POST">
                 <div class="form-group">
                     IMIĘ: <input type="text" th:name="name"/>
+                    <br>
                     NAZWISKO: <input type="text" th:name="surname"/>
+                    <br>
                     DATA URODZENIA: <input type="text" th:name="dateOfBirth"/>
+                    <br>
                     ADRES EMAIL: <input type="text" th:name="email"/>
+                    <br>
                     NR TELEFONU: <input type="text" th:name="phone"/>
-                    PŁEĆ: <input type="text" th:name="sex"/>
+                    <br>
+
+                    PŁEĆ: <input type="text" th:name="sex" list="sexList"/>
+                    <div>
+                    <datalist id="sexList">
+                        <option value="MĘŻCZYZNA">
+                        <option value="KOBIETA">
+                    </datalist>
+                    </div>
+                    <br>
                     KRAJ: <input type="text" th:name="country"/>
+                    <br>
                     MIASTO: <input type="text" th:name="city"/>
+                    <br>
                     KOD POCZTOWY: <input type="text" th:name="postalCode"/>
+                    <br>
                     ULICA: <input type="text" th:name="street"/>
                     <br>
                     <br>
-<!--                    PODAJ ID ZAWODÓW: <input type="text" th:name="tournamentId"/>-->
+                    PODAJ ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Zapisz się" name="button"/>
@@ -85,16 +125,13 @@
             <hr/>
         </div>
 
+
     </div>
 
 
 </div>
 
 </div>
-
-
-
-
 
 
 <div class="row mt-3">

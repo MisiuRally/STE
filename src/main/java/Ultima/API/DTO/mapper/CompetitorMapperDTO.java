@@ -19,6 +19,7 @@ public class CompetitorMapperDTO {
                 .ageCategories(competitor.getAgeCategories())
                 .startNumber(competitor.getStartNumber())
                 .result(competitor.getResult())
+                .averageSpeed(competitor.getAverageSpeed())
                 .tournamentDTO(tournamentMapperDTO.mapperToDTO(competitor.getTournament()))
                 .build();
 
@@ -31,6 +32,7 @@ public class CompetitorMapperDTO {
                 .ageCategories(competitorDTO.getAgeCategories())
                 .startNumber(competitorDTO.getStartNumber())
                 .result(competitorDTO.getResult())
+                .averageSpeed(competitorDTO.getAverageSpeed())
                 .tournament(tournamentMapperDTO.mapperFromDTO(competitorDTO.getTournamentDTO()))
                 .build();
 

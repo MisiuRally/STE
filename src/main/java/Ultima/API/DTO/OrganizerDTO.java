@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OrganizerDTO {
 
-
+    Integer organizerId;
     String nameOfOrganizer;
     String email;
     String phone;

@@ -11,4 +11,8 @@ public interface TournamentDao {
     TournamentEntity findTournamentById(Integer id);
 
     void save(TournamentEntity tournamentEntity);
+
+    List<TournamentEntity> findAllTournamentsByOrganizerEmail(String email);
+
+    void update(TournamentEntity tournamentById);
 }

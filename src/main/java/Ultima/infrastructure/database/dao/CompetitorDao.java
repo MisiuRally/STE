@@ -15,4 +15,11 @@ public interface CompetitorDao {
     List<CompetitorEntity> findAllCopmetitors();
 
     CompetitorEntity findCompetitorByEmail(String email);
+
+    List<CompetitorEntity> findAllCompetitorsWithTournamentId(Integer tournamentId);
+
+    CompetitorEntity findCompetitorByStartNumberAndTournamentId(String  startNumber, String tournamentId);
+
+    void update(CompetitorEntity competitorByStartNumber);
+
 }

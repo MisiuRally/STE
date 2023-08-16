@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SPORT TIME ENTERPRISE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+<div>
+    <h1>WITAJ ADMINISTRATORZE</h1>
+    <br>
+
+    <div class=" row mt-3">
+        <div class="col-md-4">
+            <a th:href="@{/tournament_management}" class="btn btn-info" role="button">ZARZĄDZANIE ZAWODAMI</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2>DZIAŁ TOWRZENIA NOWEGO ORGANIZATORA</h2>
+        <div class="row mt-5">
+            <h3>PODAJ DANE NOWEGO ORGANIZATORA</h3>
+            <br>
+            <br>
+
+            <form action="#" th:action="@{/administrator/addNewOrganizer}" method="POST">
+                <div class="col-sm">
+                    <div class="col-md-6">
+                        NAZWA ORGANIZATORA: <input type="text" th:name="nameOfOrganizer"/>
+                    </div>
+                    <div class="col-md-6">
+                        ADRES EMAIL: <input type="text" th:name="email"/>
+                    </div>
+                    <div class="col-md-6">
+                        NR TELEFONU: <input type="text" th:name="phone"/>
+                    </div>
+                    <div class="col-md-6">
+                        KRAJ: <input type="text" th:name="country"/>
+                    </div>
+                    <div class="col-md-6">
+                        MIASTO: <input type="text" th:name="city"/>
+                    </div>
+                    <div class="col-md-6">
+                        KOD POCZTOWY: <input type="text" th:name="postalCode"/>
+                    </div>
+                    <div class="col-md-6">
+                        ULICA: <input type="text" th:name="street"/>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Zapisz nowego organizatora" name="button"/>
+                </div>
+
+            </form>
+
+        </div>
+        <br>
+        <br>
+    </div>
+
+
+    <div class="container">
+        <h2>DZIAŁ TOWRZENIA NOWYCH ZAWODÓW</h2>
+        <div class="row mt-5">
+            <h3>PODAJ DANE NOWYCH ZAWODÓW</h3>
+            <br>
+            <br>
+
+            <form action="#" th:action="@{administrator/createNewTournament}" method="POST">
+                <div class="col-sm">
+                    <div class="col-md-3">
+                        NAZWA ZAWODÓW: <input type="text" th:name="nameOfTournament"/>
+                    </div>
+                    <div class="col-md-3">
+                        MAX ILOŚĆ ZAWODNIKÓW: <input type="number" th:name="numberOfStartPlates"/>
+                    </div>
+                    <div class="col-md-3">
+                        RODZAJ ZAWODÓW: <input type="text" th:name="sportCategory" list="typeOfCompetitions"/>
+                    </div>
+                    <div>
+                        <datalist id="typeOfCompetitions">
+                            <option value="BIEGI">
+                            <option value="KOLARSTWO GÓRSKIE">
+                            <option value="KOLARSTWO SZOSOWE">
+                            <option value="BIEGI NARCIARSKIE">
+                            <option value="WYŚCIGI PSICH ZAPRZĘGÓW">
+                        </datalist>
+                    </div>
+
+                    <div class="col-md-3">
+                        DATA ROZPOCZĘCIA ZAWODÓW: <input type="text" th:name="startOfTournament"/>
+                    </div>
+                    <div class="col-md-3">
+                        DATA ZAKOŃCZENIA ZAWODÓW: <input type="text" th:name="endOfTournament"/>
+                    </div>
+                    <div class="col-md-3">
+                        DYSTANS: <input type="text" th:name="distance"/>
+                    </div>
+                    <div class="col-md-3">
+                        WPISOWE: <input type="text" th:name="buyIn"/>
+                    </div>
+
+                    <div class="col-md-3">
+                        EMAIL ORGANIZATORA <input type="text" th:name="organizer"/>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Stwórz nowe zawody" name="button"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="#" th:action="@{administrator/getData}"> method="GET">
+<!--            <label for="organizerName">"DOSTĘPNI ORGANIZATORZY</label>-->
+<!--            <select id="organizerName"  >-->
+<!--                <option th:ech="OrganizerDTO : ${availableOrganizers}"></option>-->
+<!--            </select>-->
+        </form>
+
+    </div>
+</div>
+
+    <div class=" row mt-3">
+        <div class="col-md-4">
+            <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -19,17 +19,13 @@ public class OrganizerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "organizer_id")
     private Integer organizerId;
-
     @Column(name = "name_of_organizer ")
     private String nameOfOrganizer;
-
     @Column(name = "email")
     private String email;
-
     @Column(name = "phone")
     private String phone;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 

@@ -1,7 +1,5 @@
 package Ultima.API.DTO;
 
-import Ultima.domain.Tournament;
-import Ultima.service.managment.Categories;
 import lombok.*;
 
 @Data
@@ -9,16 +7,16 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompetitorDTO {
+public class CompetitorsDTOs {
 
-    Integer competitorId;
-    PersonDTO personDTO;
-    String ageCategories;
     Integer startNumber;
+    String name;
+    String surname;
+    String ageCategories;
+    String city;
     String result;
     String averageSpeed;
     TournamentDTO tournamentDTO;
-
 
 
 }

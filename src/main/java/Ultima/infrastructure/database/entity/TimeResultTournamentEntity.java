@@ -15,18 +15,18 @@ import java.util.Set;
 //@ToString(of = {""})
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
-@Entity
+//@AllArgsConstructor
+//@Entity
 @Table(name = "time_result_tournament")
 public class TimeResultTournamentEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "time_result_tournament_id")
-    private Integer timeResultTournamentId;
-
-    @OneToOne
-    @JoinColumn(name = "tournament_entity_id")
-    private TournamentEntity tournament;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "time_result_tournament_id")
+//    private Integer timeResultTournamentId;
+//
+//    @OneToOne
+//
+//    private TournamentEntity tournament;
 
 
 

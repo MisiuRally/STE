@@ -4,7 +4,9 @@ CREATE TABLE competitor
     age_category                VARCHAR(32) NOT NULL,
     start_number                INT         NOT NULL,
     result               VARCHAR(32) ,
+    average_speed             VARCHAR(5) ,
 	person_id					INT			NOT NULL,
+
 
    CONSTRAINT fk_competitor_person
            FOREIGN KEY (person_id)

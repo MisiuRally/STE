@@ -23,7 +23,10 @@ public class TournamentMapperDTOs {
                 .endOfTournament(tournamentEntity.getEndOfTournament())
                 .sportCategories(tournamentEntity.getSportCategory())
                 .nameOfOrganizer(tournamentEntity.getOrganizer().getNameOfOrganizer())
+                .distance(tournamentEntity.getDistance())
+                .buyIn(tournamentEntity.getBuyIn())
                 .city(tournamentEntity.getOrganizer().getAddress().getCity())
+                .startOfCompetitors(tournamentEntity.getStartOfCompetitors())
                 .build();
     }
 }

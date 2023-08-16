@@ -12,6 +12,7 @@ public class OrganizerMapperDTO {
 
     public Organizer mapperFromDto(OrganizerDTO organizerDTO) {
         return Organizer.builder()
+                .organizerId(organizerDTO.getOrganizerId())
                 .nameOfOrganizer(organizerDTO.getNameOfOrganizer())
                 .email(organizerDTO.getEmail())
                 .phone(organizerDTO.getPhone())
@@ -26,6 +27,7 @@ public class OrganizerMapperDTO {
 
     public OrganizerDTO mapperToDTO(Organizer organizer) {
         return OrganizerDTO.builder()
+                .organizerId(organizer.getOrganizerId())
                 .nameOfOrganizer(organizer.getNameOfOrganizer())
                 .email(organizer.getEmail())
                 .phone(organizer.getPhone())

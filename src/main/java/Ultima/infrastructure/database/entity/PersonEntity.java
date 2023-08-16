@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 //@EqualsAndHashCode(of = "")
-//@ToString(of = {""})
+@ToString(of = {"personId","email"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

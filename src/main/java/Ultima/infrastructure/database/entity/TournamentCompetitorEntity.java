@@ -13,7 +13,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+//@Entity
 @Table(name = "tournament_competitor")
 public class TournamentCompetitorEntity {
 

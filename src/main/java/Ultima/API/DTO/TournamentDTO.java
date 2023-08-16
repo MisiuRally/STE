@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Set;
 
@@ -21,8 +22,11 @@ public class TournamentDTO {
     Integer numbersOfStartPlates;
     OrganizerDTO organizerDTO;
     String sportCategories;
-    OffsetDateTime startOfTournament;
-    OffsetDateTime endOfTournament;
+    String startOfTournament;
+    String endOfTournament;
+    Integer distance;
+    BigDecimal buyIn;
+    String startOfCompetitors;
     Set<CompetitorDTO> competitorDTOS;
 
 }

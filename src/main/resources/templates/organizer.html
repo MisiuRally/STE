@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SPORT TIME ENTERPRISE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+<div>
+    <h1>WITAJ ORGANIZATORZE</h1>
+
+
+    <div>
+        <table class="table">
+            <thead class="table-dark">
+            <h2>OTO ZORGANIZOWANE PRZEZ CIEBIE IMPREZY SPORTOWE:</h2>
+
+
+            <form action="#" th:action="@{/organizer/orgTour}" method="POST">
+                <div class="form-group">
+                    <h2>PODAJ SWÓJ ADRES EMAIL:</h2>
+                    ADRES EMAIL: <input type="text" th:name="email"/>
+                    <div class="form-group">
+                        <input type="submit" value="Szukaj zawodów" name="button"/>
+                    </div>
+                </div>
+            </form>
+            <tr>
+                <th>NR ID</th>
+                <th>NAZWA IMPREZY</th>
+                <th>MAX. ILOŚĆ ZAWODNIKÓW</th>
+                <th>ORGANIZATOR</th>
+                <th>MIASTO</th>
+                <th>RODZAJ ZAWODOW</th>
+                <th>DATA STARTU ZAWODÓW</th>
+                <th>DATA ZAKOŃCZENIA ZAWODÓW</th>
+                <th>DYSTANS[km]</th>
+                <th>WPISOWE[PLN]</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="TournamentDTO : ${availableOrganizerTournaments}">
+                <td th:text="${TournamentDTO.id}"></td>
+                <td th:text="${TournamentDTO.namOfTournament}"></td>
+                <td th:text="${TournamentDTO.numbersOfStartPlates}"></td>
+                <td th:text="${TournamentDTO.nameOfOrganizer}"></td>
+                <td th:text="${TournamentDTO.city}"></td>
+                <td th:text="${TournamentDTO.sportCategories}"></td>
+                <td th:text="${TournamentDTO.startOfTournament}"></td>
+                <td th:text="${TournamentDTO.endOfTournament}"></td>
+                <td th:text="${TournamentDTO.distance}"></td>
+                <td th:text="${TournamentDTO.buyIn}"></td>
+            </tr>
+            <br>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+#########################################
+<div>
+    <h2>LISTA STARTOWA ZAWODÓW</h2>
+    <table class="table">
+        <thead class="table-dark">
+
+        <form action="#" th:action="@{/organizer/startList}" method="POST">
+            <div class="form-group">
+
+                ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                <div class="form-group">
+                    <input type="submit" value="Pokaż listę startową" name="button"/>
+                </div>
+            </div>
+        </form>
+        <tr>
+            <th>NUMER STARTOWY</th>
+            <th>IMIĘ</th>
+            <th>NAZWISKO</th>
+            <th>KATEGORIA WIEKOWA</th>
+            <th>MIASTO</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="CompetitorDTOs : ${startList}">
+            <td th:text="${CompetitorDTOs.startNumber}"></td>
+            <td th:text="${CompetitorDTOs.name}"></td>
+            <td th:text="${CompetitorDTOs.surname}"></td>
+            <td th:text="${CompetitorDTOs.ageCategories}"></td>
+            <td th:text="${CompetitorDTOs.city}"></td>
+
+        </tr>
+        <br>
+        </tbody>
+    </table>
+
+
+</div>
+######################################################
+<div>
+    <h2>WYNIKI ZAWODÓW</h2>
+    <table class="table">
+        <thead class="table-dark">
+
+        <form action="#" th:action="@{/organizer/result}" method="POST">
+            <div class="form-group">
+
+                ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                <div class="form-group">
+                    <input type="submit" value="Pokaż wyniki" name="button"/>
+                </div>
+            </div>
+        </form>
+        <tr>
+            <th>NUMER STARTOWY</th>
+            <th>IMIĘ</th>
+            <th>NAZWISKO</th>
+            <th>KATEGORIA WIEKOWA</th>
+            <th>MIASTO</th>
+            <th>CZAS</th>
+            <th>ŚREDNIA PRĘDKOŚĆ</th>
+
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="CompetitorDTOs : ${result}">
+            <td th:text="${CompetitorDTOs.startNumber}"></td>
+            <td th:text="${CompetitorDTOs.name}"></td>
+            <td th:text="${CompetitorDTOs.surname}"></td>
+            <td th:text="${CompetitorDTOs.ageCategories}"></td>
+            <td th:text="${CompetitorDTOs.city}"></td>
+            <td th:text="${CompetitorDTOs.result}"></td>
+            <td th:text="${CompetitorDTOs.averageSpeed}"></td>
+
+        </tr>
+        <br>
+        </tbody>
+    </table>
+
+
+</div>
+#########################################
+
+    <div class="container">
+        <h2>ZMODYFIKUJ PARAMETRY ZAWODÓW:</h2>
+
+        <div>
+            <h3>MODYFIKACJA ILOŚCI MIEJSC STARTOWYCH</h3>
+
+        </div>
+
+        <form action="#" th:action="@{/organizer/updateStartNumbers}" method="POST">
+            <div class="form-group">
+                <h2>PODAJ SWÓJ ADRES EMAIL:</h2>
+                ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                NOWA LICZBA MIEJSC: <input type="text" th:name="numberOfStartPlates"/>
+
+                <div class="form-group">
+                    <input type="submit" value="Aktualizuj" name="button"/>
+                </div>
+            </div>
+        </form>
+        ########################################
+        <div>
+            <h3>MODYFIKACJA TERMINU ZAWODÓW</h3>
+
+        </div>
+        <form action="#" th:action="@{/organizer/updateDateOfTournament}" method="POST">
+            <div class="form-group">
+
+                ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                NOWY TERMIN STARTU ZAWODÓW: <input type="text" th:name="newStartDate"/>
+                NOWY TERMIN ZAKOŃCZENIA ZAWODÓW: <input type="text" th:name="newEndDate"/>
+
+                <div class="form-group">
+                    <input type="submit" value="Aktualizuj" name="button"/>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -24,6 +24,7 @@ public class CompetitorEntityMapper {
                 .ageCategories(competitorEntity.getAgeCategories())
                 .startNumber(competitorEntity.getStartNumber())
                 .result(competitorEntity.getResult())
+                .averageSpeed(competitorEntity.getAverageSpeed())
                 .tournament(tournamentEntityMapper.mapperFromEntity(competitorEntity.getTournamentEntity()))
                 .build();
     }
@@ -35,6 +36,7 @@ public class CompetitorEntityMapper {
                 .ageCategories(competitor.getAgeCategories())
                 .startNumber(competitor.getStartNumber())
                 .result(competitor.getResult())
+                .averageSpeed(competitor.getAverageSpeed())
                 .tournamentEntity(tournamentEntityMapper.mapperToEntity(competitor.getTournament()))
                 .build();
     }

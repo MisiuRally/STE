@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,8 +24,6 @@ public class PersonService {
     private final PersonDao personDao;
     private final PersonEntityMapper personEntityMapper;
     private final PersonMapperDTO personMapperDTO;
-
-
 
 
     public PersonDTO personBuilder(String name, String surname, String dateOfBirth, String email, String phone, String sex, String country, String city, String postalCode, String street) {
@@ -51,6 +50,13 @@ public class PersonService {
     }
 
     public PersonEntity findPersonByEmail(String email) {
-        return personDao.findPersonByEmail(email).get();
+
+        Optional<PersonEntity> personByEmail = personDao.findPersonByEmail(email);
+        if (personByEmail.isEmpty()) {
+            throw new RuntimeException(("Competitor with email: [%s] does not exist." +
+                    " Use option for new competitor!").formatted(email));
+        }
+        return personByEmail.get();
     }
+
 }

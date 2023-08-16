@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SPORT TIME ENTERPRISE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+<div>
+    <table class="table">
+        <form action="#" th:action="@{/tournament_management/result}" method="POST">
+            <div class="form-group">
+                ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
+                <div class="form-group">
+                    <input type="submit" value="Pokaż wyniki" name="button"/>
+                </div>
+            </div>
+        </form>
+
+        <thead>
+        <table class="table">
+            <tr>
+                <th>ID ZAWODÓW</th>
+                <th>NAZWA ZAWODÓW</th>
+                <th>RODZAJ ZAWODÓW</th>
+                <th>DATA ROZPOCZĘCIA</th>
+                <th>DATA ZAKOŃCZENIA</th>
+                <th>GODZINA STARTU ZAWODNIKÓW</th>
+                <th>USTAW GODZINĘ STARTU</th>
+            </tr>
+
+
+            <tr th:each="CompetitorDTOs : ${result}">
+
+                <td th:text="${CompetitorDTOs.tournamentDTO.tournamentId}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.namOfTournament}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.sportCategories}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.startOfTournament}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.endOfTournament}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.startOfCompetitors}"></td>
+                <td>
+                    <form action="#"
+                          th:action="@{/tournament_management/set_start_of_competitors/{id}(id=${CompetitorDTOs.tournamentDTO.tournamentId})}"
+                          method="POST">
+                        <input type="submit" value="USTAW" name="button"/>
+                    </form>
+
+                </td>
+
+            </tr>
+        </table>
+
+
+        ####################################
+        <table class="table">
+
+            <tr>
+                <th>NUMER STARTOWY</th>
+                <th>IMIĘ</th>
+                <th>NAZWISKO</th>
+                <th>KATEGORIA WIEKOWA</th>
+                <th>MIASTO</th>
+                <th>CZAS</th>
+                <th>ŚREDNIA PRĘDKOŚĆ</th>
+                <th>CZAS STARTU:</th>
+                <th>CZAS FINISZU:</th>
+
+            </tr>
+
+
+            <tbody>
+            <tr th:each="CompetitorDTOs : ${result}">
+                <td th:text="${CompetitorDTOs.startNumber}"></td>
+                <td th:text="${CompetitorDTOs.name}"></td>
+                <td th:text="${CompetitorDTOs.surname}"></td>
+                <td th:text="${CompetitorDTOs.ageCategories}"></td>
+                <td th:text="${CompetitorDTOs.city}"></td>
+                <td th:text="${CompetitorDTOs.result}"></td>
+                <td th:text="${CompetitorDTOs.averageSpeed}"></td>
+                <td th:text="${CompetitorDTOs.tournamentDTO.startOfCompetitors}"></td>
+                <td>
+                    <form action="#"
+                          th:action="@{/tournament_management/set_result/{st}/{id}(st = ${CompetitorDTOs.startNumber},id = ${CompetitorDTOs.tournamentDTO.tournamentId})}"
+                          method="POST">
+                        <input type="submit" value="USTAW" name="button"/>
+                    </form>
+                </td>
+
+
+            </tr>
+
+
+            </tbody>
+        </table>
+    </table>
+    <h2>YoMAn</h2>
+    <div class=" row mt-3">
+        <div class="col-md-4">
+            <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

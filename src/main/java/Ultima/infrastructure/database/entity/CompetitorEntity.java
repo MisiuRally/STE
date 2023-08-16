@@ -5,8 +5,9 @@ import lombok.*;
 
 @Getter
 @Setter
+@With
 @EqualsAndHashCode(of = "competitorId")
-@ToString(of = {"competitorId"})
+@ToString(of = {"competitorId", "person"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,11 +24,13 @@ public class CompetitorEntity {
     private Integer startNumber;
     @Column(name = "result")
     private String result;
+    @Column(name = "average_speed")
+    private String averageSpeed;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private PersonEntity person;
-    @OneToOne
-    @JoinColumn(name = "tournament_id")
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "tournament")
     private TournamentEntity tournamentEntity;
 
 

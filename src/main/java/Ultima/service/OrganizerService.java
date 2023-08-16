@@ -1,5 +1,6 @@
 package Ultima.service;
 
+import Ultima.API.DTO.AddressDTO;
 import Ultima.API.DTO.OrganizerDTO;
 import Ultima.domain.Address;
 import Ultima.domain.Organizer;
@@ -21,6 +22,26 @@ public class OrganizerService {
     private final OrganizerEntityMapper entityMapper;
     private final OrganizerDao organizerDao;
 
+    public OrganizerDTO createNewOrganizer(String nameOfOrganizer, String email, String phone,
+                                           String country, String city, String postalCode, String street) {
+        return OrganizerDTO.builder()
+                .nameOfOrganizer(nameOfOrganizer)
+                .email(email)
+                .phone(phone)
+                .address(AddressDTO.builder()
+                        .country(country)
+                        .city(city)
+                        .postalCode(postalCode)
+                        .street(street)
+                        .build())
+                .build();
+
+
+    }
+
+    public void saveNewOrganizer(OrganizerDTO organizerDTO) {
+        addOrganizer(organizerDTO);
+    }
 
     public void addOrganizer(OrganizerDTO organizerDTO) {
         Organizer organizer = organizerBuilder(organizerDTO);
@@ -65,5 +86,7 @@ public class OrganizerService {
                 .build();
 
     }
+
+
 
 }

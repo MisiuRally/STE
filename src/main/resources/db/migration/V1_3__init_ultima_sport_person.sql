@@ -9,7 +9,7 @@ CREATE TABLE person
     sex             VARCHAR(32)     NOT NULL,
 	address_id		INT				NOT NULL,
 	PRIMARY KEY (person_id),
---    UNIQUE (email),
+    UNIQUE (person_id,email),
     CONSTRAINT fk_person_address
             FOREIGN KEY (address_id)
                 REFERENCES address (address_id)

@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface TournamentCompetitorDao  {
 
-    List<TournamentCompetitorEntity> findAll();
 
-    void save(TournamentCompetitorEntity tournamentCompetitor);
 
 }

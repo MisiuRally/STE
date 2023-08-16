@@ -32,18 +32,19 @@ public class PersonRepository implements PersonDao {
     @Override
     public void savePerson(PersonEntity person) {
 
-        try (
-                Session session = HibernateConfiguration.getSession()) {
-            if (Objects.isNull(session)) {
-                throw new RuntimeException("Session is null ");
-            }
-            session.beginTransaction();
-
-            session.persist(person);
-            session.getTransaction().commit();
-            log.info("Person saved");
-
-        }
+//        try (
+//                Session session = HibernateConfiguration.getSession()) {
+//            if (Objects.isNull(session)) {
+//                throw new RuntimeException("Session is null ");
+//            }
+//            session.beginTransaction();
+//
+//            session.persist(person);
+//            session.getTransaction().commit();
+//            log.info("Person saved");
+//
+//        }
+        personJpaRepository.save(person);
     }
 
     @Override

@@ -34,16 +34,17 @@ public class OrganizerRepository implements OrganizerDao {
     @Override
     public void saveOrganizer(OrganizerEntity organizerEntity) {
 
-        try (
-                Session session = HibernateConfiguration.getSession()) {
-            if (Objects.isNull(session)) {
-                throw new RuntimeException("Session is null ");
-            }
-            session.beginTransaction();
-            session.persist(organizerEntity);
-            session.getTransaction().commit();
-
-        }
+//        try (
+//                Session session = HibernateConfiguration.getSession()) {
+//            if (Objects.isNull(session)) {
+//                throw new RuntimeException("Session is null ");
+//            }
+//            session.beginTransaction();
+//            session.persist(organizerEntity);
+//            session.getTransaction().commit();
+//
+//        }
+        organizerJpaRepository.save(organizerEntity);
     }
 
     public List<Organizer> findAllOrganizer() {

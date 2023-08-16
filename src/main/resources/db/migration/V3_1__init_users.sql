@@ -1,10 +1,12 @@
 ALTER TABLE competitor
-ADD COLUMN tournament_id INT,
-ADD FOREIGN KEY (tournament_id) REFERENCES tournament (id);
-
+ADD COLUMN tournament INT NOT NULL ,
+ADD FOREIGN KEY (tournament) REFERENCES tournament (id);
+--
+--
+--
 ALTER TABLE tournament
-ADD COLUMN competitor_id INT,
-ADD FOREIGN KEY (competitor_id) REFERENCES competitor (competitor_id);
+ADD COLUMN competitor INT,
+ADD FOREIGN KEY (competitor) REFERENCES competitor (competitor_id);
 
 
 

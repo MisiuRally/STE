@@ -15,8 +15,8 @@ values
 (57,'Gmina Dzierzoniow','dzierzoniow@dzierzoniow.com','123654789',27);
 
 insert into TOURNAMENT (name_of_tournament,number_of_start_plates,
-sport_category,start_of_tournament,end_of_tournament,organizer_id)
+sport_category,start_of_tournament,end_of_tournament,distance,buy_in,organizer_id)
 values
-('Bardzka piateczka', 100,'RUNNING','10-10-2025','11-10-2025',55),
-('Tour de Swidnica', 100,'CYCLING','11-12-2025','11-12-2025',56),
-('Z gorki na pazurki', 50,'SKIING','13-08-2026','13-08-2026',57);
+('Bardzka piateczka', 100,'RUNNING','10-10-2025','11-10-2025',25,75,55),
+('Tour de Swidnica', 100,'CYCLING','11-12-2025','11-12-2025',25,80,56),
+('Z gorki na pazurki', 50,'SKIING','13-08-2026','13-08-2026',25,35,57);

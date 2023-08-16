@@ -25,6 +25,9 @@ public class TournamentMapperDTO {
                .sportCategories(tournament.getSportCategories())
                .startOfTournament(tournament.getStartOfTournament())
                .endOfTournament(tournament.getEndOfTournament())
+               .distance(tournament.getDistance())
+               .buyIn(tournament.getBuyIn())
+               .startOfCompetitors(tournament.getStartOfCompetitors())
                 .build();
     }
 
@@ -38,6 +41,9 @@ public class TournamentMapperDTO {
                 .sportCategories(tournamentDTO.getSportCategories())
                 .startOfTournament(tournamentDTO.getStartOfTournament())
                 .endOfTournament(tournamentDTO.getEndOfTournament())
+                .distance(tournamentDTO.getDistance())
+                .buyIn(tournamentDTO.getBuyIn())
+                .startOfCompetitors(tournamentDTO.getStartOfCompetitors())
                 .build();
     }
 

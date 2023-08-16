@@ -15,6 +15,7 @@ public class Competitor {
     String ageCategories;
     Integer startNumber;
     String result;
+    String averageSpeed;
     Tournament tournament;
 
 

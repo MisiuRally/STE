@@ -3,14 +3,15 @@ package Ultima.infrastructure.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
 @With
 @EqualsAndHashCode(of = "tournamentId")
-@ToString(of = {"nameOfTournament"})
+@ToString(of = {"nameOfTournament", "competitor", "tournamentId"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,36 +22,28 @@ public class TournamentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer tournamentId;
-    @Column(name ="name_of_tournament" )
+    @Column(name = "name_of_tournament")
     private String nameOfTournament;
     @Column(name = "number_of_start_plates")
     private Integer numberOfStartPlates;
-    @Column(name = "sport_category" )
+    @Column(name = "sport_category")
     private String sportCategory;
     @Column(name = "start_of_tournament")
-    private  OffsetDateTime startOfTournament;
+    private String startOfTournament;
     @Column(name = "end_of_tournament")
-    private OffsetDateTime endOfTournament;
+    private String endOfTournament;
+    @Column(name = "distance")
+    private Integer distance;
+    @Column(name = "buy_in")
+    private BigDecimal buyIn;
+    @Column(name="start_of_competitor")
+    private String startOfCompetitors;
     @OneToOne(fetch = FetchType.EAGER,
             cascade = CascadeType.MERGE)
     @JoinColumn(name = "organizer_id")
     private OrganizerEntity organizer;
+    @OneToMany(fetch =FetchType.LAZY,mappedBy = "tournamentEntity",orphanRemoval = true,cascade = CascadeType.ALL)
+    private List<CompetitorEntity> competitor;
 
-    @OneToMany
-    @JoinColumn(name = "competitor_id")
-    private Set<CompetitorEntity> competitorEntity;
-
-
-
-
-
-
-
-
-
-
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "competitor_id")
-//    private Set<CompetitorEntity> competitorEntities=new HashSet<>();
 
 }

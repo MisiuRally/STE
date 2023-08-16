@@ -28,6 +28,9 @@ public class TournamentEntityMapper {
                 .sportCategories(tournamentEntity.getSportCategory())
                 .startOfTournament(tournamentEntity.getStartOfTournament())
                 .endOfTournament(tournamentEntity.getEndOfTournament())
+                .distance(tournamentEntity.getDistance())
+                .buyIn(tournamentEntity.getBuyIn())
+                .startOfCompetitors(tournamentEntity.getStartOfCompetitors())
                 .build();
     }
 
@@ -42,6 +45,9 @@ public class TournamentEntityMapper {
                 .sportCategory(tournament.getSportCategories())
                 .startOfTournament(tournament.getStartOfTournament())
                 .endOfTournament(tournament.getEndOfTournament())
+                .distance(tournament.getDistance())
+                .buyIn(tournament.getBuyIn())
+                .startOfCompetitors(tournament.getStartOfCompetitors())
                 .build();
     }
 

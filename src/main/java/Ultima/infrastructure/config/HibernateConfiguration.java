@@ -9,13 +9,16 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Map;
+
 @Slf4j
 @EnableTransactionManagement
-@Component
+//@Component
 public class HibernateConfiguration {
 
 
@@ -41,30 +44,31 @@ public class HibernateConfiguration {
     private static final SessionFactory sessionFactory = loadSessionFactory();
 
 
-        private static SessionFactory loadSessionFactory() {
-            try {
-                StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
-                        .applySettings(HIBERNATE_SETTINGS)
-                        .applySettings(HIKARI_CP_SETTINGS)
-                        .build();
+    private static SessionFactory loadSessionFactory() {
+        try {
+            StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
+                    .applySettings(HIBERNATE_SETTINGS)
+                    .applySettings(HIKARI_CP_SETTINGS)
+                    .build();
 
-                Metadata metadata = new MetadataSources(standardServiceRegistry)
-                        .addAnnotatedClass(AddressEntity.class)
-                        .addAnnotatedClass(CompetitorEntity.class)
-                        .addAnnotatedClass(OrganizerEntity.class)
-                        .addAnnotatedClass(PersonEntity.class)
-                        .addAnnotatedClass(TimeResultTournamentEntity.class)
-                        .addAnnotatedClass(TournamentEntity.class)
-                        .addAnnotatedClass(TournamentCompetitorEntity.class)
+            Metadata metadata = new MetadataSources(standardServiceRegistry)
+//                    .addAnnotatedClass(AddressEntity.class)
+//                    .addAnnotatedClass(PersonEntity.class)
+//                    .addAnnotatedClass(CompetitorEntity.class)
+//                    .addAnnotatedClass(OrganizerEntity.class)
+//                        .addAnnotatedClass(TimeResultTournamentEntity.class)
+//                    .addAnnotatedClass(TournamentEntity.class)
+//                        .addAnnotatedClass(TournamentCompetitorEntity.class)
 
-                        .getMetadataBuilder()
-                        .build();
+                    .getMetadataBuilder()
+                    .build();
 
-                return metadata.getSessionFactoryBuilder().build();
-            } catch (Throwable ex) {
-                throw new ExceptionInInitializerError(ex);
-            }
+            return metadata.getSessionFactoryBuilder().build();
+        } catch (Throwable ex) {
+            throw new ExceptionInInitializerError(ex);
         }
+    }
+
     public static void closeSessionFactory() {
         try {
             sessionFactory.close();
