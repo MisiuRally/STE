@@ -38,6 +38,8 @@
             <th>DATA ZAKOŃCZENIA ZAWODÓW</th>
             <th>DYSTANS[km]</th>
             <th>WPISOWE[PLN]</th>
+            <th>PROGNOZA POGODY</th>
+
         </tr>
         </thead>
 
@@ -53,6 +55,13 @@
             <td th:text="${TournamentDTO.endOfTournament}"></td>
             <td th:text="${TournamentDTO.distance}"></td>
             <td th:text="${TournamentDTO.buyIn}"></td>
+
+            <td>
+                <form action="#"
+                      th:action="@{weather/{city}(city = ${TournamentDTO.city})}" method="POST">
+                    <input type="submit" value="SPRAWDŹ AKTUALNĄ POGODĘ" name="button"/>
+                </form>
+            </td>
         </tr>
         <br>
         </tbody>
@@ -81,55 +90,52 @@
             </form>
 
         </div>
-
-
-        <div class="page-header" id="banner">
-            <h3>JESTEŚ NOWYM ZAWODNIKIEM:</h3>
-
-            <form action="#" th:action="@{/competitor/addNew}" method="POST">
-                <div class="form-group">
-                    IMIĘ: <input type="text" th:name="name"/>
-                    <br>
-                    NAZWISKO: <input type="text" th:name="surname"/>
-                    <br>
-                    DATA URODZENIA: <input type="text" th:name="dateOfBirth"/>
-                    <br>
-                    ADRES EMAIL: <input type="text" th:name="email"/>
-                    <br>
-                    NR TELEFONU: <input type="text" th:name="phone"/>
-                    <br>
-
-                    PŁEĆ: <input type="text" th:name="sex" list="sexList"/>
-                    <div>
-                    <datalist id="sexList">
-                        <option value="MĘŻCZYZNA">
-                        <option value="KOBIETA">
-                    </datalist>
-                    </div>
-                    <br>
-                    KRAJ: <input type="text" th:name="country"/>
-                    <br>
-                    MIASTO: <input type="text" th:name="city"/>
-                    <br>
-                    KOD POCZTOWY: <input type="text" th:name="postalCode"/>
-                    <br>
-                    ULICA: <input type="text" th:name="street"/>
-                    <br>
-                    <br>
-                    PODAJ ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Zapisz się" name="button"/>
-                </div>
-            </form>
-            <hr/>
-        </div>
-
-
     </div>
 
 
-</div>
+    <div class="container">
+        <table class="table">
+            <thead class="table-dark">
+
+            <h3>SPRAWDŹ HISTORIĘ STARTÓW:</h3>
+            <form action="#" th:action="@{/competitor/showHistory}" method="GET">
+                <div class="form-group">
+                   PODAJ EMAIL: <input type="text" th:name="email"/>
+                    <div class="form-group">
+                        <input type="submit" value="Pokaż wyniki" name="button"/>
+                    </div>
+                </div>
+            </form>
+
+            <tr>
+                <th>NUMER STARTOWY</th>
+                <th>IMIĘ</th>
+                <th>NAZWISKO</th>
+                <th>KATEGORIA WIEKOWA</th>
+                <th>MIASTO</th>
+                <th>CZAS</th>
+                <th>ŚREDNIA PRĘDKOŚĆ</th>
+                <th>OSIĄGNIĘTE MIEJSCE:</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="CompetitorDTOs : ${historyOfCompetitor}">
+                <td th:text="${CompetitorDTOs.startNumber}"></td>
+                <td th:text="${CompetitorDTOs.name}"></td>
+                <td th:text="${CompetitorDTOs.surname}"></td>
+                <td th:text="${CompetitorDTOs.ageCategories}"></td>
+                <td th:text="${CompetitorDTOs.city}"></td>
+                <td th:text="${CompetitorDTOs.result}"></td>
+                <td th:text="${CompetitorDTOs.averageSpeed}"></td>
+                <td th:text="${CompetitorDTOs.place}"></td>
+            </tr>
+
+            <br>
+            <br>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 

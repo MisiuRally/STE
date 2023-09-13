@@ -5,9 +5,13 @@ CREATE TABLE organizer
     email                   VARCHAR(32) NOT NULL,
     phone                   VARCHAR(32) NOT NULL,
 	address_id				INT			NOT NULL,
+    user_id                 INT         NOT NULL,
     PRIMARY KEY (organizer_id),
---    UNIQUE (email),
+    UNIQUE (email),
     CONSTRAINT fk_organizer_address
         FOREIGN KEY (address_id)
-            REFERENCES address (address_id)
+            REFERENCES address (address_id),
+    CONSTRAINT fk_organizer_user
+            FOREIGN KEY (user_id)
+                REFERENCES users (user_id)
 );

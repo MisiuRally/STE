@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SPORT TIME ENTERPRISE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>WITAJ ZAWODNIKU</h1>
+    <br>
+</div>
+
+<div>
+    <form action="#" th:action="@{/user/add}" method="POST">
+    <table class="table">
+        <thead class="table-dark">
+
+        <div class="container">
+
+            <div class="col-sm">
+
+                <div class="page-header" id="banner">
+                    <h3>JESTEŚ NOWYM ZAWODNIKIEM:</h3>
+
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                IMIĘ: <input type="text" th:name="name"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                NAZWISKO: <input type="text" th:name="surname"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                DATA URODZENIA: <input type="text" th:name="dateOfBirth"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                ADRES EMAIL: <input type="text" th:name="email"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                NR TELEFONU: <input type="text" th:name="phone"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                PŁEĆ: <input type="text" th:name="sex" list="sexList"/>
+                                <div>
+                                    <datalist id="sexList">
+                                        <option value="MĘŻCZYZNA">
+                                        <option value="KOBIETA">
+                                    </datalist>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                KRAJ: <input type="text" th:name="country"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                MIASTO: <input type="text" th:name="city"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                KOD POCZTOWY: <input type="text" th:name="postalCode"/>
+                            </div>
+                            <br>
+                            <div class="col-md-6">
+                                ULICA: <input type="text" th:name="street"/>
+                            </div>
+                            #####################################################
+                            <h3>DANE DO LOGOWANIA</h3>
+                            <div class="col-md-6">
+                                NAZWA UŻYTKOWNIKA: <input type="text" th:name="user"/>
+                            </div>
+
+                            <div class="col-md-6">
+                                HASŁO: <input type="text" th:name="password"/>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Zapisz się" name="button"/>
+                        </div>
+
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        </thead>
+    </table>
+    </form>
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+    </div>
+</div>
+</body>
+</html>

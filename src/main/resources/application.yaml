@@ -1,13 +1,13 @@
 server:
   port: 8191
   servlet:
-    context-path: /ultima
+    context-path: /STE
 
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ultima_sport
+    url: jdbc:postgresql://localhost:5432/STE
     username: postgres
     password: password
     hikari:
@@ -15,6 +15,19 @@ spring:
       connectionTimeout: 20000
       minimumIdle: 10
       maximumPoolSize: 20
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: steprojet83@gmail.com
+  password: pjwsjyfghdpiergz
+  protocol: smtp
+  tls: true
+  properties.mail.smtp:
+    auth: true
+    starttls.enable: true
+    ssl.trust: smtp.gmail.com
+
+
   jpa:
     show-sql: true
     hibernate:
@@ -33,3 +46,9 @@ spring:
     password:
     baseline-description: "init"
     baseline-version: 0
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO
+

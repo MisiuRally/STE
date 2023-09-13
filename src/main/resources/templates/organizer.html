@@ -160,7 +160,6 @@
 
         <form action="#" th:action="@{/organizer/updateStartNumbers}" method="POST">
             <div class="form-group">
-                <h2>PODAJ SWÓJ ADRES EMAIL:</h2>
                 ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
                 NOWA LICZBA MIEJSC: <input type="text" th:name="numberOfStartPlates"/>
 
@@ -175,7 +174,7 @@
 
         </div>
         <form action="#" th:action="@{/organizer/updateDateOfTournament}" method="POST">
-            <div class="form-group">
+            <div class="col-md-2">
 
                 ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
                 NOWY TERMIN STARTU ZAWODÓW: <input type="text" th:name="newStartDate"/>

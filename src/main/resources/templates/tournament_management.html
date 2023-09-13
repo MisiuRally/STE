@@ -9,10 +9,39 @@
 
 
 <body>
+<div>
+
+    <table class="table">
+        <form action="#" th:action="@{/tournament_management}" method="GET">
+            <tr>
+                <th>ID ZAWODÓW</th>
+                <th>NAZWA ZAWODÓW</th>
+                <th>RODZAJ ZAWODÓW</th>
+                <th>DATA ROZPOCZĘCIA</th>
+                <th>DATA ZAKOŃCZENIA</th>
+
+            </tr>
+
+            <tr th:each="tournament : ${allTournaments}">
+
+                <td th:text="${tournament.tournamentId}"></td>
+                <td th:text="${tournament.namOfTournament}"></td>
+                <td th:text="${tournament.sportCategories}"></td>
+                <td th:text="${tournament.startOfTournament}"></td>
+                <td th:text="${tournament.endOfTournament}"></td>
+
+            </tr>
+        </form>
+    </table>
+
+
+</div>
+
 
 <div>
     <table class="table">
-        <form action="#" th:action="@{/tournament_management/result}" method="POST">
+        <form action="#" th:action="@{/tournament_management/result}" method="GET">
+
             <div class="form-group">
                 ID ZAWODÓW: <input type="text" th:name="tournamentId"/>
                 <div class="form-group">
@@ -34,26 +63,23 @@
             </tr>
 
 
-            <tr th:each="CompetitorDTOs : ${result}">
+            <tr>
 
-                <td th:text="${CompetitorDTOs.tournamentDTO.tournamentId}"></td>
-                <td th:text="${CompetitorDTOs.tournamentDTO.namOfTournament}"></td>
-                <td th:text="${CompetitorDTOs.tournamentDTO.sportCategories}"></td>
-                <td th:text="${CompetitorDTOs.tournamentDTO.startOfTournament}"></td>
-                <td th:text="${CompetitorDTOs.tournamentDTO.endOfTournament}"></td>
-                <td th:text="${CompetitorDTOs.tournamentDTO.startOfCompetitors}"></td>
+                <td th:text="${tournamentDTO!=null}?${tournamentDTO.tournamentId}: '###'"></td>
+                <td th:text="${tournamentDTO!=null}?${tournamentDTO.namOfTournament}: '###'"></td>
+                <td th:text="${tournamentDTO!=null}?${tournamentDTO.sportCategories}: '###'"></td>
+                <td th:text="${tournamentDTO!=null}?${tournamentDTO.startOfTournament}: '###'"></td>
+                <td th:text="${tournamentDTO!=null}?${tournamentDTO.endOfTournament}: '###'"></td>
+                <td id="id" th:text="${tournamentDTO!=null}?${tournamentDTO.startOfCompetitors}: '###'"></td>
                 <td>
                     <form action="#"
-                          th:action="@{/tournament_management/set_start_of_competitors/{id}(id=${CompetitorDTOs.tournamentDTO.tournamentId})}"
+                          th:action="@{/tournament_management/set_start_of_competitors/{id}(id = ${tournamentDTO!=null}?${tournamentDTO.tournamentId})}"
                           method="POST">
-                        <input type="submit" value="USTAW" name="button"/>
+                        <input id="newId" type="submit" value="USTAW" name="button"/>
                     </form>
-
                 </td>
-
             </tr>
         </table>
-
 
         ####################################
         <table class="table">
@@ -67,31 +93,33 @@
                 <th>CZAS</th>
                 <th>ŚREDNIA PRĘDKOŚĆ</th>
                 <th>CZAS STARTU:</th>
+                <th>OSIĄGNIĘTE MIEJSCE:</th>
                 <th>CZAS FINISZU:</th>
 
             </tr>
-
-
             <tbody>
-            <tr th:each="CompetitorDTOs : ${result}">
+            <tr class="jakkolwiek" th:each="CompetitorDTOs : ${result}">
                 <td th:text="${CompetitorDTOs.startNumber}"></td>
                 <td th:text="${CompetitorDTOs.name}"></td>
                 <td th:text="${CompetitorDTOs.surname}"></td>
                 <td th:text="${CompetitorDTOs.ageCategories}"></td>
                 <td th:text="${CompetitorDTOs.city}"></td>
-                <td th:text="${CompetitorDTOs.result}"></td>
+                <td th:text="${CompetitorDTOs.result}" class="result"></td>
                 <td th:text="${CompetitorDTOs.averageSpeed}"></td>
                 <td th:text="${CompetitorDTOs.tournamentDTO.startOfCompetitors}"></td>
+                <td th:text="${CompetitorDTOs.place}"></td>
+
+
                 <td>
                     <form action="#"
                           th:action="@{/tournament_management/set_result/{st}/{id}(st = ${CompetitorDTOs.startNumber},id = ${CompetitorDTOs.tournamentDTO.tournamentId})}"
                           method="POST">
-                        <input type="submit" value="USTAW" name="button"/>
+
+
+                        <input class="submit" name="submit" type="submit" value="Submit" onclick="eatFood();"/>
+
                     </form>
                 </td>
-
-
-            </tr>
 
 
             </tbody>
@@ -106,4 +134,23 @@
 
 </div>
 </body>
+<script>
+    var a= document.getElementById("id");
+   var b = document.getElementById("newId");
+   if(a.textContent){
+   b.setAttribute("disabled",true);
+   }
+
+   var d = document.querySelectorAll(".submit");
+
+  d.forEach(item=>{
+    var c= item.parentNode.parentNode.parentNode.querySelector(".result").textContent;
+      if(c){
+  item.style.display = "none";
+   }
+  })
+
+
+</script>
+
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SPORT TIME ENTERPRISE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+
+    <h1>PROGNOZA POGODY</h1>
+    <br>
+
+    <table class="table">
+        <thead class="table-dark">
+        <form action="#" th:action="@{/weather}" method="GET">
+            <tr>
+                <th>MIASTO:</th>
+                <th>KRAJ</th>
+                <th>WOJEWÓDZTWO</th>
+
+            </tr>
+
+            <tbody>
+            <tr>
+                <td th:text="${localization.name}"></td>
+                <td th:text="${localization.country}"></td>
+                <td th:text="${localization.state}"></td>
+            </tr>
+            <br>
+            </tbody>
+
+
+            <tr>
+                <th>TEMPERATURA:</th>
+                <th>CIŚNIENIE</th>
+                <th>WILGOTNOŚĆ</th>
+                <th>PRĘDKOŚĆ WIATRU</th>
+            </tr>
+
+            <tbody>
+            <tr>
+                <td th:text="${weather.temperature}"></td>
+                <td th:text="${weather.pressure}"></td>
+                <td th:text="${weather.humidity}"></td>
+                <td th:text="${weather.windSpeed}"></td>
+            </tr>
+            <br>
+            </tbody>
+        </form>
+        </thead>
+    </table>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+    </div>
+
+</body>
+</html>

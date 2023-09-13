@@ -20,6 +20,21 @@
         </div>
     </div>
 
+    <div class=" row mt-3">
+        <div class="col-md-4">
+            <h1>DEZAKTYWACJA URZYTKOWNIKA</h1>
+            <form action="#" th:action="@{/administrator/userDeactivation}" method="POST">
+                <div class="col-md-6">
+                    ADRES EMAIL: <input type="text" th:name="email"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Dezaktywuj użytkownika" name="button"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
     <div class="container">
         <h2>DZIAŁ TOWRZENIA NOWEGO ORGANIZATORA</h2>
@@ -73,7 +88,7 @@
             <br>
             <br>
 
-            <form action="#" th:action="@{administrator/createNewTournament}" method="POST">
+            <form action="#" th:action="@{/administrator/createNewTournament}" method="POST">
                 <div class="col-sm">
                     <div class="col-md-3">
                         NAZWA ZAWODÓW: <input type="text" th:name="nameOfTournament"/>
@@ -116,20 +131,13 @@
                 <div class="form-group">
                     <input type="submit" value="Stwórz nowe zawody" name="button"/>
                 </div>
+
             </form>
-
         </div>
-    </div>
-
-    <div class="container">
-        <form action="#" th:action="@{administrator/getData}"> method="GET">
-<!--            <label for="organizerName">"DOSTĘPNI ORGANIZATORZY</label>-->
-<!--            <select id="organizerName"  >-->
-<!--                <option th:ech="OrganizerDTO : ${availableOrganizers}"></option>-->
-<!--            </select>-->
-        </form>
 
     </div>
+
+
 </div>
 
     <div class=" row mt-3">

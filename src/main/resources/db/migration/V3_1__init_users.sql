@@ -1,47 +1,38 @@
-ALTER TABLE competitor
-ADD COLUMN tournament INT NOT NULL ,
-ADD FOREIGN KEY (tournament) REFERENCES tournament (id);
---
---
---
-ALTER TABLE tournament
-ADD COLUMN competitor INT,
-ADD FOREIGN KEY (competitor) REFERENCES competitor (competitor_id);
+
+insert into users (user_id,user_name,password,active)
+values(9997,'admin','$2a$12$MbCHRTXm58fQnfkkBl1GnOCyRoTx99j4LS/akrQW.0r/cVN.mrhh6',true);
+
+insert into users (user_id,user_name,password,active)
+values(9998,'competitor','$2a$12$MbCHRTXm58fQnfkkBl1GnOCyRoTx99j4LS/akrQW.0r/cVN.mrhh6',true);
+
+insert into users (user_id,user_name,password,active)
+values(9999,'organizer','$2a$12$MbCHRTXm58fQnfkkBl1GnOCyRoTx99j4LS/akrQW.0r/cVN.mrhh6',true);
 
 
+insert into person (person_id, name, surname, date_of_birth, email,phone,sex,address_id,user_id)
+            values(9999,'admin','admin','26-08-2023','steprojet83@gmail.com','+48 500 600 700','admin',0,9997);
 
---ALTER TABLE mechanic
---ADD COLUMN user_id INT,
---ADD FOREIGN KEY (user_id) REFERENCES car_dealership_user (user_id);
+insert into person(person_id,name,surname,date_of_birth,email,phone,sex,address_id,user_id)
+values(9998,'competitor','competitor','0000','steprojet83@gmail.com','+48 500 600 700','competitor',0,9998);
 
---insert into car_dealership_user (user_id, user_name, email, password, active) values (1, 'stefan_sprzedawca', 'stefan_sprzedawca@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---insert into car_dealership_user (user_id, user_name, email, password, active) values (2, 'agnieszka_samochodowa', 'agnieszka_samochodowa@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---insert into car_dealership_user (user_id, user_name, email, password, active) values (3, 'tomasz_kombi', 'tomasz_kombi@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---insert into car_dealership_user (user_id, user_name, email, password, active) values (4, 'rafal_dach', 'rafal_dach@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---
---insert into car_dealership_user (user_id, user_name, email, password, active) values (5, 'robert_srubokret', 'robert_srubokret@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---insert into car_dealership_user (user_id, user_name, email, password, active) values (6, 'zygmunt_naprawa', 'zygmunt_naprawa@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---insert into car_dealership_user (user_id, user_name, email, password, active) values (7, 'remigiusz_alufelga', 'remigiusz_alufelga@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---
---insert into car_dealership_user (user_id, user_name, email, password, active) values (8, 'test_user', 'test_user@zajavka.pl', '$2a$12$TwQsp1IusXTDl7LwZqL0qeu49Ypr6vRdEzRq2vAsgb.zvOtrnzm5G', true);
---
---UPDATE salesman SET user_id = 1 WHERE pesel = '67020499436';
---UPDATE salesman SET user_id = 2 WHERE pesel = '73021314515';
---UPDATE salesman SET user_id = 3 WHERE pesel = '55091699846';
---UPDATE salesman SET user_id = 4 WHERE pesel = '62081825675';
---
---UPDATE mechanic SET user_id = 5 WHERE pesel = '52070997836';
---UPDATE mechanic SET user_id = 6 WHERE pesel = '83011863727';
---UPDATE mechanic SET user_id = 7 WHERE pesel = '67111396321';
---
---insert into car_dealership_role (role_id, role) values (1, 'SALESMAN'), (2, 'MECHANIC'), (3, 'REST_API');
---
---insert into car_dealership_user_role (user_id, role_id) values (1, 1), (2, 1), (3, 1), (4, 1);
---insert into car_dealership_user_role (user_id, role_id) values (5, 2), (6, 2), (7, 2);
---insert into car_dealership_user_role (user_id, role_id) values (8, 3);
---
---ALTER TABLE salesman
---ALTER COLUMN user_id SET NOT NULL;
---
---ALTER TABLE mechanic
---ALTER COLUMN user_id SET NOT NULL;
+insert into person (person_id, name, surname, date_of_birth, email,phone,sex,address_id,user_id)
+            values(9997,'organizer','organizer','0000','steprojet83@gmail.com','+48 500 600 700','organizer',0,9999);
+
+insert into role (role_id,role) values(1,'ADMIN'),(2,'COMPETITOR'),(3,'ORGANIZER');
+
+insert into user_role(user_id,role_id) values (9997,1),(9997,2),(9997,3);
+insert into user_role(user_id,role_id) values (9998,2);
+insert into user_role(user_id,role_id) values (9999,3);
+
+insert into ORGANIZER (organizer_id,name_of_organizer,email,phone,address_id,user_id)
+values
+(55,'Gmina Bardo','bardo@bardo.com','556228663',26,9999),
+(56,'Gmina Swidnica','swidnica@swinica.com','448663552',25,9999),
+(57,'Gmina Dzierzoniow','dzierzoniow@dzierzoniow.com','123654789',27,9999);
+
+insert into TOURNAMENT (name_of_tournament,number_of_start_plates,
+sport_category,start_of_tournament,end_of_tournament,distance,buy_in,organizer_id)
+values
+('Bardzka piateczka', 100,'RUNNING','12-08-2023','12-08-2023',25,75,55),
+('Tour de Swidnica', 100,'CYCLING','11-08-2023','11-08-2023',25,80,56),
+('Z gorki na pazurki', 50,'SKIING','13-08-2023','13-08-2023',25,35,57);
