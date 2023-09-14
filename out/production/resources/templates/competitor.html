@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <title>SPORT TIME ENTERPRISE</title>
+
+</head>
+
+
+<body>
+
+<div class="main-content">
+
+    <h1 >WITAJ ZAWODNIKU</h1>
+    <br>
+</div>
+
+<div>
+    <table class="table">
+        <thead class="table-dark">
+        <h2>OTO DOSTĘPNE IMPREZY SPORTOWE:</h2>
+        <tr>
+            <th>NR ID</th>
+            <th>NAZWA IMPREZY</th>
+            <th>MAX. ILOŚĆ ZAWODNIKÓW</th>
+            <th>ORGANIZATOR</th>
+            <th>MIASTO</th>
+            <th>RODZAJ ZAWODOW</th>
+            <th>DATA STARTU ZAWODÓW</th>
+            <th>DATA ZAKOŃCZENIA ZAWODÓW</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="TournamentDTO : ${availableTournament}">
+            <td th:text="${TournamentDTO.id}"></td>
+            <td th:text="${TournamentDTO.namOfTournament}"></td>
+            <td th:text="${TournamentDTO.numbersOfStartPlates}"></td>
+            <td th:text="${TournamentDTO.nameOfOrganizer}"></td>
+            <td th:text="${TournamentDTO.city}"></td>
+            <td th:text="${TournamentDTO.sportCategories}"></td>
+            <td th:text="${TournamentDTO.startOfTournament}"></td>
+            <td th:text="${TournamentDTO.endOfTournament}"></td>
+        </tr>
+        <br>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="container">
+    <div><h2>STREFA ZAPISU DO ZAWODÓW:</h2></div>
+
+    <div class="col-sm">
+
+        <div class="col-sm">
+            <h3>JESTEŚ ZAREJESTROWANYM ZAWODNIKIEM:</h3>
+            <br>
+            <br>
+
+        <div class="col-sm">
+            <h3>JESTEŚ NOWYM ZAWODNIKIEM:</h3>
+
+            <form action="#"  th:action="@{/competitor/addNew}" method="POST">
+                <div class="form-group">
+                    IMIĘ: <input type="text" th:name="name"/>
+                    NAZWISKO: <input type="text" th:name="surname"/>
+                    DATA URODZENIA: <input type="text" th:name="dateOfBirth"/>
+                    ADRES EMAIL: <input type="text" th:name="email"/>
+                    NR TELEFONU: <input type="text" th:name="phone"/>
+                    PŁEĆ: <input type="text" th:name="sex"/>
+                    KRAJ: <input type="text" th:name="country"/>
+                    MIASTO: <input type="text" th:name="city"/>
+                    KOD POCZTOWY: <input type="text" th:name="postalCode"/>
+                    ULICA: <input type="text" th:name="street"/>
+                    <br>
+                    <br>
+<!--                    PODAJ ID ZAWODÓW: <input type="text" th:name="tournamentId"/>-->
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Zapisz się" name="button"/>
+                </div>
+            </form>
+            <hr/>
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <a th:href="@{/}" class="btn btn-info" role="button">POWRÓT DO STRONY STARTOWEJ</a>
+    </div>
+</div>
+</body>
+</html>

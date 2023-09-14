@@ -1,0 +1,10 @@
+--DROP TABLE IF EXISTS flyway_schema_history CASCADE;
+--DROP TABLE IF EXISTS address CASCADE;
+--DROP TABLE IF EXISTS competitor CASCADE;
+--DROP TABLE IF EXISTS organizer CASCADE;
+--DROP TABLE IF EXISTS person CASCADE;
+--DROP TABLE IF EXISTS result_of_tournament CASCADE;
+--DROP TABLE IF EXISTS tournament CASCADE;
+--DROP TABLE IF EXISTS time_result CASCADE;
+--DROP TABLE IF EXISTS time_result_tournament CASCADE;
+--DROP TABLE IF EXISTS tournament_competitor CASCADE;
