@@ -30,6 +30,7 @@ public class ObjectsCreators {
                 .startOfTournament("25-09-2025")
                 .endOfTournament("26-09-2025")
                 .startOfCompetitors("2025-08-08 12:12")
+                .sportCategory("RALLY")
                 .distance(100)
                 .numberOfStartPlates(300)
                 .organizer(createOrganizer())
@@ -122,7 +123,7 @@ public class ObjectsCreators {
 
     public OrganizerEntity createOrganizer() {
         return OrganizerEntity.builder()
-                .organizerId(25)
+                .organizerId(1)
                 .address(createAddressEntity())
                 .phone("123456789")
                 .nameOfOrganizer("The Organizator")

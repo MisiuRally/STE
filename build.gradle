@@ -62,6 +62,7 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'io.github.hakky54:logcaptor:2.9.0'
 
 }
 

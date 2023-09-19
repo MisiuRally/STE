@@ -33,6 +33,6 @@ values
 insert into TOURNAMENT (name_of_tournament,number_of_start_plates,
 sport_category,start_of_tournament,end_of_tournament,distance,buy_in,organizer_id)
 values
-('Bardzka piateczka', 100,'RUNNING','12-08-2023','12-08-2023',25,75,55),
-('Tour de Swidnica', 100,'CYCLING','11-08-2023','11-08-2023',25,80,56),
-('Z gorki na pazurki', 50,'SKIING','13-08-2023','13-08-2023',25,35,57);
+('Bardzka piateczka', 100,'RUNNING','12-08-2024','12-08-2024',25,75,55),
+('Tour de Swidnica', 100,'CYCLING','11-08-2024','11-08-2024',25,80,56),
+('Z gorki na pazurki', 50,'SKIING','13-08-2024','13-08-2024',25,35,57);

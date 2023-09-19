@@ -9,10 +9,8 @@ import STE.infrastructure.database.dao.OrganizerDao;
 import STE.infrastructure.database.entity.OrganizerEntity;
 import STE.infrastructure.database.entity.RoleEntity;
 import STE.infrastructure.database.repository.RoleRepository;
-import STE.infrastructure.database.repository.jpa.OrganizerJpaRepository;
 import STE.infrastructure.database.repository.mapper.OrganizerEntityMapper;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

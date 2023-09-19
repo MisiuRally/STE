@@ -1,15 +1,15 @@
 package STE.service;
 
 import STE.domain.Organizer;
-import STE.infrastructure.database.dao.OrganizerDao;
-import STE.infrastructure.database.repository.mapper.OrganizerEntityMapper;
-import STE.service.managment.ObjectsCreators;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class OrganizerServiceTest {
 
     private final OrganizerService organizerService;
-
 
 
 

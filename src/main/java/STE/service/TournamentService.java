@@ -109,12 +109,12 @@ public class TournamentService {
     }
 
 
-    public void setTimeOfStart(TournamentEntity tournamentById) {
+    public void setTimeOfStart(TournamentEntity tournamentEntity) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime timeNow = LocalDateTime.now();
         String format = formatter.format(timeNow);
-        tournamentById.setStartOfCompetitors(format);
-        tournamentDao.update(tournamentById);
+        tournamentEntity.setStartOfCompetitors(format);
+        tournamentDao.update(tournamentEntity);
 
     }
 
