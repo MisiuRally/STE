@@ -9,11 +9,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+
 @AllArgsConstructor
+@Repository
 public class CompetitorRepository implements CompetitorDao {
 
-    private final CompetitorJpaRepository competitorJpaRepository;
+     CompetitorJpaRepository competitorJpaRepository;
+
+    public void clearDataBase(){
+        competitorJpaRepository.clearDB();
+    }
 
 
     @Override
@@ -75,4 +80,8 @@ public class CompetitorRepository implements CompetitorDao {
     public void deleteCopmpetitor(CompetitorEntity competitorEntity) {
         competitorJpaRepository.delete(competitorEntity);
     }
+
+
 }
+
+

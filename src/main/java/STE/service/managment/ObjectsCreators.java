@@ -14,11 +14,14 @@ import java.util.Set;
 @Service
 public class ObjectsCreators {
 
+
+
     public CompetitorEntity createCompetitorEntity() {
         return CompetitorEntity.builder()
                 .competitorId(1)
                 .person(createPerson())
                 .startNumber(1)
+                .ageCategories("OldBoy")
                 .tournamentEntity(createTournamentEntity())
                 .build();
     }
@@ -56,7 +59,10 @@ public class ObjectsCreators {
     public UserEntity createUserEntity() {
         return UserEntity.builder()
                 .id(1)
-                .roles(Set.of(RoleEntity.builder().build()))
+                .roles(Set.of(RoleEntity.builder()
+                                .id(1)
+                                .role("Competitor")
+                        .build()))
                 .userName("user")
                 .password("password")
                 .active(true)
@@ -109,7 +115,7 @@ public class ObjectsCreators {
 
     public PersonEntity createPerson() {
         return PersonEntity.builder()
-                .personId(1)
+                .personId(1122)
                 .name("Jurek")
                 .surname("Ogórek")
                 .sex("Mężczyzna")
@@ -117,7 +123,9 @@ public class ObjectsCreators {
                 .email("jurek@wp.pl")
                 .phone("123887662")
                 .address(createAddressEntity())
+                .userId(createUserEntity())
                 .build();
+
 
     }
 
@@ -134,8 +142,8 @@ public class ObjectsCreators {
                         .password("password")
                         .active(true)
                         .roles(Set.of(RoleEntity.builder()
-                                        .id(10)
-                                        .role("ORGANIZER")
+                                .id(10)
+                                .role("ORGANIZER")
                                 .build()))
                         .build())
                 .build();

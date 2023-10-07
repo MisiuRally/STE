@@ -16,9 +16,6 @@ public class PersonController {
 
     public static final String PERSON = "/person";
 
-
-    private final PersonService personService;
-
     @PostMapping("/add_person")
     public PersonDTO  createPersonDTO(
             @RequestParam(value = "name") String name,

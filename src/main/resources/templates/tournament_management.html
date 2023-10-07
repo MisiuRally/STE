@@ -116,7 +116,7 @@
                           method="POST">
 
 
-                        <input class="submit" name="submit" type="submit" value="Submit" onclick="eatFood();"/>
+                        <input class="submit" name="submit" type="submit" value="Ustaw" onclick="eatFood();"/>
 
                     </form>
                 </td>
@@ -142,13 +142,13 @@
    }
 
    var d = document.querySelectorAll(".submit");
-
   d.forEach(item=>{
     var c= item.parentNode.parentNode.parentNode.querySelector(".result").textContent;
       if(c){
   item.style.display = "none";
    }
   })
+
 
 
 </script>

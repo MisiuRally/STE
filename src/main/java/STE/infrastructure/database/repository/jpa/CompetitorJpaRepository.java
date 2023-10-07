@@ -2,11 +2,13 @@ package STE.infrastructure.database.repository.jpa;
 
 import STE.infrastructure.database.entity.CompetitorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+
 
 public interface CompetitorJpaRepository extends JpaRepository<CompetitorEntity, Integer> {
 
@@ -43,5 +45,14 @@ public interface CompetitorJpaRepository extends JpaRepository<CompetitorEntity,
              WHERE comp.competitorId= :id
             """)
     Optional<CompetitorEntity> findCompetitorById(Integer id);
+    @Modifying
+    @Query("""
+            DELETE FROM CompetitorEntity
+            """)
+    void clearDB();
+
+
+
+
 }
 

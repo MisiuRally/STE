@@ -29,14 +29,10 @@ import java.util.stream.Collectors;
 public class AdministratorController {
 
     public static final String ADMINISTRATOR = "/administrator";
-
-    private final PersonService personService;
     private final OrganizerService organizerService;
     private final TournamentService tournamentService;
     private final OrganizerMapperDTO organizerMapperDTO;
     private final UserRepository userRepository;
-
-
 
 
     @GetMapping(ADMINISTRATOR)

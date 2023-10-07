@@ -7,6 +7,7 @@ import STE.infrastructure.database.entity.PersonEntity;
 import STE.service.CompetitorService;
 import STE.service.PersonService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

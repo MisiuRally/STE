@@ -13,10 +13,10 @@ insert into person (person_id, name, surname, date_of_birth, email,phone,sex,add
             values(9999,'admin','admin','26-08-2023','steprojet83@gmail.com','+48 500 600 700','admin',0,9997);
 
 insert into person(person_id,name,surname,date_of_birth,email,phone,sex,address_id,user_id)
-values(9998,'competitor','competitor','0000','steprojet83@gmail.com','+48 500 600 700','competitor',0,9998);
+values(9998,'competitor','competitor','26-08-2023','steprojet83@gmail.com','+48 500 600 700','competitor',0,9998);
 
 insert into person (person_id, name, surname, date_of_birth, email,phone,sex,address_id,user_id)
-            values(9997,'organizer','organizer','0000','steprojet83@gmail.com','+48 500 600 700','organizer',0,9999);
+            values(9997,'organizer','organizer','26-08-2023','steprojet83@gmail.com','+48 500 600 700','organizer',0,9999);
 
 insert into role (role_id,role) values(1,'ADMIN'),(2,'COMPETITOR'),(3,'ORGANIZER');
 

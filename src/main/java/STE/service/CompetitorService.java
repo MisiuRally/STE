@@ -5,9 +5,13 @@ import STE.infrastructure.database.dao.TournamentDao;
 import STE.infrastructure.database.entity.CompetitorEntity;
 import STE.infrastructure.database.entity.PersonEntity;
 import STE.infrastructure.database.entity.TournamentEntity;
+import STE.infrastructure.database.repository.CompetitorRepository;
+import STE.infrastructure.database.repository.TournamentRepository;
 import STE.service.managment.Categories;
 import STE.service.managment.Suppliers;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,28 +23,16 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-
-@RequiredArgsConstructor
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class CompetitorService {
 
     private final CompetitorDao competitorDao;
     private final TournamentDao tournamentDao;
     private final PersonService personService;
     private final Suppliers suppliers;
-
-    @Transactional
-    public CompetitorEntity createNewCompetitor(String email, Integer tournamentId) {
-        PersonEntity personEntity = personService.findPersonByEmail(email);
-        TournamentEntity tournamentById = tournamentDao.findTournamentById(tournamentId);
-        return CompetitorEntity.builder()
-                .ageCategories(createAgeCategorie(personEntity))
-                .startNumber(createStartNumber(tournamentId))
-                .person(personEntity)
-                .tournamentEntity(tournamentById)
-                .build();
-    }
 
     @Transactional
     public CompetitorEntity createNewCompetitor(PersonEntity person, Integer tournamentId) {
@@ -55,39 +47,30 @@ public class CompetitorService {
     @Transactional
     public Integer createStartNumber(Integer tournamentId) {
         List<CompetitorEntity> competitorEntities = competitorDao.findAllCompetitorsWithTournamentId(tournamentId);
-        Integer size = competitorEntities.size();
+        int size = competitorEntities.size();
         return size + 1;
     }
 
 
     @Transactional
-    public void saveNewCompetitor(CompetitorEntity competitorEntity) {
-
-        competitorDao.saveCompetitor(competitorEntity);
-
-    }
-
-    @Transactional
     public void addExistingCompetitorToTournament(String email, int id) {
         PersonEntity personByEmail = personService.findPersonByEmail(email);
-        CompetitorEntity newCompetitor = createNewCompetitor(personByEmail, id);
-        competitorDao.saveCompetitor(newCompetitor);
+        List<CompetitorEntity> allCompetitorsWithTournamentId = findAllCompetitorsWithTournamentId(id);
+        List<String> emailList = allCompetitorsWithTournamentId.stream()
+                .map(competitor -> competitor.getPerson().getEmail())
+                .filter(a -> a.equals(email))
+                .toList();
 
+        if(emailList.isEmpty()){
+            CompetitorEntity newCompetitor = createNewCompetitor(personByEmail, id);
+            competitorDao.saveCompetitor(newCompetitor);
+        }else throw new RuntimeException("Competitor already exist on this start list");
 
     }
 
-    public CompetitorEntity findCompetitorByEmail(String email) {
-        return competitorDao.findCompetitorByEmail(email);
-
-
-    }
-
-
-    private String createAgeCategorie(PersonEntity person) {
+    public String createAgeCategorie(PersonEntity person) {
 
         String dateOfBirth = person.getDateOfBirth();
-
-
         DateTimeFormatter df = new DateTimeFormatterBuilder()
                 .parseCaseInsensitive()
                 .appendPattern("dd-MM-yyyy")
@@ -98,7 +81,7 @@ public class CompetitorService {
         String format = dateNow.format(df);
         LocalDate dateNowEur = LocalDate.parse(format, df);
         LocalDate parseDateOfBirth = LocalDate.parse(dateOfBirth, df);
-        Integer ageOfPlayer = dateNow.getYear() - parseDateOfBirth.getYear();
+        int ageOfPlayer = dateNow.getYear() - parseDateOfBirth.getYear();
 
         String ageCategory = null;
 

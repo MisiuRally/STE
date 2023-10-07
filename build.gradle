@@ -5,12 +5,9 @@ plugins {
 
 
 
-//    id 'java'
-//    id 'org.springframework.boot' version '2.7.14'
-//    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'UltimaSport'
+group = 'STE'
 version = '1.0'
 sourceCompatibility = '17'
 
@@ -54,7 +51,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.flywaydb:flyway-core'
-
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

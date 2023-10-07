@@ -14,7 +14,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-public class BeanConfiguration {
+public class BeanConfiguration  {
 
     @Bean
     public static ObjectMapper objectMapper() {
@@ -57,4 +57,9 @@ public class BeanConfiguration {
 
         return mailSender;
     }
+
+
+
+
+
 }

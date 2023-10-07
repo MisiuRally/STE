@@ -36,7 +36,6 @@ public class CompetitorController {
     private final TournamentMapperDTOs tournamentMapperDTOs;
     private final CompetitorsMapperDTOs competitorsMapperDTOs;
 
-
     @GetMapping(COMPETITOR)
     public String competitorPage(Model model) {
         List<TournamentEntity> tournamentEntity = tournamentService.findAllTournaments();
@@ -47,7 +46,6 @@ public class CompetitorController {
         model.addAttribute("availableTournament", listOfTournament);
         return "competitor";
     }
-
 
     @PostMapping(value = "/competitor/addExisting")
     public String createExistingCompetitor(

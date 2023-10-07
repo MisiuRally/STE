@@ -1,19 +1,56 @@
+server:
+  port: 8191
+  servlet:
+    context-path: /STE
+
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
+  profile: test
   datasource:
-    url: jdbc:h2:file:~/test
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
     username: sa
     password:
-    driverClassName: org.h2.Driver
-
-  jpa:
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+    jpa:
       hibernate:
-        ddl-auto: none
+        ddl-auto: update
+    hibernate:
+      dialect: org.hibernate.dialect.H2Dialect
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: steprojet83@gmail.com
+  password: pjwsjyfghdpiergz
+  protocol: smtp
+  tls: true
+  properties.mail.smtp:
+    auth: true
+    starttls.enable: true
+    ssl.trust: smtp.gmail.com
 
-#spring:
+
 #  jpa:
+#    show-sql: true
 #    hibernate:
-#      ddl-auto: validate
+#      ddl-auto: none
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  flyway:
+    ignore-missing-migrations: true
+    enabled: true
+    locations: classpath:db/migration
+    baselineOnMigrate: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO

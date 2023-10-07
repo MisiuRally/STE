@@ -5,6 +5,7 @@ import STE.infrastructure.database.entity.TournamentEntity;
 import STE.infrastructure.database.repository.jpa.TournamentJpaRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,9 +13,10 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class TournamentRepository implements TournamentDao {
-   TournamentJpaRepository tournamentJpaRepository;
+
+  private final TournamentJpaRepository tournamentJpaRepository;
 
     @Override
     public List<TournamentEntity> findAllTournament() {

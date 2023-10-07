@@ -8,6 +8,7 @@ import STE.infrastructure.database.entity.UserEntity;
 import STE.infrastructure.database.repository.RoleRepository;
 import STE.infrastructure.security.SecurityConfig;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -21,18 +22,18 @@ public class PersonService {
 
     private final PersonDao personDao;
     private final RoleRepository roleRepository;
-        private final SecurityConfig securityConfig;
+    private final SecurityConfig securityConfig;
 
 
     public PersonEntity personBuilder(String name, String surname,
-                                   String dateOfBirth, String email,
-                                   String phone, String sex, String country,
-                                   String city, String postalCode,
-                                   String street,String user,String password) {
+                                      String dateOfBirth, String email,
+                                      String phone, String sex, String country,
+                                      String city, String postalCode,
+                                      String street, String user, String password) {
 
 
         RoleEntity roleByName = roleRepository.findRoleByName("COMPETITOR");
-        Set<RoleEntity> roles= new HashSet<>();
+        Set<RoleEntity> roles = new HashSet<>();
         roles.add(roleByName);
 
         return PersonEntity.builder()
@@ -73,7 +74,7 @@ public class PersonService {
     }
 
     public List<PersonEntity> findAllPerson() {
-       return personDao.findAllPerson();
+        return personDao.findAllPerson();
     }
 
     public void update(PersonEntity personByEmail) {
